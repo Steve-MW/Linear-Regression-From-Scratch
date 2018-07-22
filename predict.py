@@ -90,8 +90,7 @@ def oneGradient(tempTheta0, tempTheta1,  points, alpha):
     tempTheta0 = tempTheta0 - tempSigma0
     tempTheta1 =  tempTheta1 - tempSigma1
 
-    print("After iteration ", i , " :")
-    print(costFunction(tempTheta0, tempTheta1, points))
+    
 
 
 
@@ -106,6 +105,9 @@ def gradientDescent(points, initialTheta0, initialTheta1, alpha, iterations):
     theta1 = initialTheta1
     for i in range(iterations):
         [theta0,theta1] = oneGradient(theta0,theta1,array(points), alpha)
+        if i%100 == 0:
+            print("After iteration ", i , " :")
+            print(costFunction(theta0, theta1, points))
         
 
     return theta0,theta1
@@ -152,7 +154,7 @@ def run():
 #if '__name__' == '__main__':
 def main():
     [theta0, theta1] = run()
-    predicting = float(input("Enter the number of hours studied !"))
+    predicting = float(input("Enter the number of hours studied :"))
     print("optimal values for the pareameters after gradient decent :- \n")
     print("Theta0 = ",theta0,"\n")
     print("Theta1 = ",theta1,"\n")
